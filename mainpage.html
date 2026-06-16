@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Joe 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Quicksand',sans-serif;
+}
+
+body{
+background:linear-gradient(
+180deg,
+#0f172a,
+#1e3a5f,
+#b08968
+);
+color:white;
+overflow-x:hidden;
+min-height:100vh;
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+}
+
+h1{
+font-size:4rem;
+margin-bottom:15px;
+}
+
+h2{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+p{
+max-width:700px;
+line-height:1.8;
+font-size:1.1rem;
+margin-bottom:15px;
+}
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:#93c5fd;
+color:#0f172a;
+font-size:1rem;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.star{
+position:fixed;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:0.2;
+}
+}
+
+.secret{
+margin-top:50px;
+background:#b08968;
+color:white;
+}
+
+iframe{
+margin-top:20px;
+border-radius:20px;
+max-width:100%;
+}
+
+footer{
+padding:50px;
+text-align:center;
+}
+
+.hidden-message{
+color:#0f172a;
+user-select:text;
+}
+
+</style>
+</head>
+
+<body>
+
+<section>
+
+<h1>🎂 Happy Birthday Joe</h1>
+
+<p>
+(Ridzuan)
+</p>
+
+<p>
+I made a tiny corner of the internet just for you.
+</p>
+
+<button onclick="scrollToSection()">
+Open 💙
+</button>
+
+</section>
+
+<section class="fade" id="letter">
+
+<h2>Hello Joe ✨</h2>
+
+<p id="typing"></p>
+
+</section>
+
+<section class="fade">
+
+<h2>🎵 Birthday Music</h2>
+
+<p>
+Press play while reading.
+</p>
+
+<iframe width="560"
+height="315"
+src="https://www.youtube.com/embed/IBtvmvvnMz4"
+allowfullscreen>
+</iframe>
+
+</section>
+
+<section class="fade">
+
+<h2>💌 A Message For You</h2>
+
+<p>
+Happy 25th Birthday Joe.
+</p>
+
+<p>
+不知不觉我们都25岁了。
+</p>
+
+<p>
+Time really flies.
+</p>
+
+<p>
+Thank you for being one of the people who unknowingly made my days a little brighter.
+</p>
+
+<p>
+Kadang-kadang awak tak sedar pun,
+tapi ada orang yang rasa happy hanya sebab awak wujud dalam hidup dia.
+</p>
+
+<p>
+You've been someone special in your own way,
+and I hope you never lose that warmth that makes people comfortable around you.
+</p>
+
+<p>
+Semoga tahun ni penuh dengan rezeki,
+ketenangan,
+kesihatan,
+dan benda-benda baik yang awak layak dapat.
+</p>
+
+</section>
+
+<section class="fade">
+
+<h2>🌙 One Last Thing</h2>
+
+<p>
+Joe,
+</p>
+
+<p>
+I don't know what the future looks like.
+</p>
+
+<p>
+Maybe we'll stay friends.
+Maybe life takes us elsewhere.
+</p>
+
+<p>
+But meeting you was one of the nicest things that happened in my life.
+</p>
+
+<p>
+谢谢你一直做你自己。
+</p>
+
+<p>
+Please stay healthy.
+Please stay happy.
+And please continue being the person that makes people smile without even trying.
+</p>
+
+<p>
+Happy Birthday.
+</p>
+
+<p>
+— Hawani 💙
+</p>
+
+<button class="secret" onclick="secretMessage()">
+Don't Click This 👀
+</button>
+
+</section>
+
+<footer>
+
+<p>
+Made with too much free time and a little bit of affection.
+</p>
+
+<div class="hidden-message">
+okay maybe i like you a tiny little bit
+</div>
+
+</footer>
+
+<script>
+
+function scrollToSection(){
+document.getElementById("letter")
+.scrollIntoView({
+behavior:"smooth"
+});
+}
+
+const text=
+"Selamat datang ke birthday website yang dibuat oleh seseorang yang terlebih rajin. 😂";
+
+let i=0;
+
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,50);
+}
+}
+
+typeWriter();
+
+function secretMessage(){
+alert(
+"Okay since you clicked...\n\nYou look quite handsome today.\n\nThat's all. Bye. 😌"
+);
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll(".fade").forEach(el=>{
+observer.observe(el);
+});
+
+for(let i=0;i<100;i++){
+
+const star=document.createElement("div");
+
+star.classList.add("star");
+
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDelay=Math.random()*3+"s";
+
+document.body.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
