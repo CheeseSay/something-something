@@ -89,13 +89,41 @@ width:2px;
 height:2px;
 background:white;
 border-radius:50%;
-animation:twinkle 3s infinite;
+box-shadow:0 0 10px white;
+animation:twinkle 2s infinite;
+pointer-events:none;
 }
 
 @keyframes twinkle{
-50%{
+
+0%{
 opacity:0.2;
+transform:scale(0.5);
 }
+
+50%{
+opacity:1;
+transform:scale(1.8);
+box-shadow:0 0 15px white;
+}
+
+100%{
+opacity:0.2;
+transform:scale(0.5);
+}
+
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-100px);
+}
+
+100%{
+transform:translateY(120vh);
+}
+
 }
 
 .secret{
@@ -129,8 +157,9 @@ user-select:text;
 
 <h1>🎂 Happy Birthday Joe</h1>
 
-<p>
-(Ridzuan)
+<p style="font-size:1.3rem; opacity:0.8;">
+for Joe (Ridzuan) 💙
+
 </p>
 
 <p>
@@ -253,6 +282,8 @@ Don't Click This 👀
 </section>
 
 <footer>
+<p style="opacity:0.6; margin-top:20px;">
+✨ Made on sleepless nights by Wani.
 
 <p>
 Made with too much free time and a little bit of affection.
@@ -306,7 +337,7 @@ document.querySelectorAll(".fade").forEach(el=>{
 observer.observe(el);
 });
 
-for(let i=0;i<100;i++){
+for(let i=0;i<150;i++){
 
 const star=document.createElement("div");
 
@@ -320,7 +351,24 @@ star.style.animationDelay=Math.random()*3+"s";
 
 document.body.appendChild(star);
 }
+window.onload = function(){
 
+for(let i=0;i<50;i++){
+
+const confetti=document.createElement("div");
+
+confetti.innerHTML="💙";
+
+confetti.style.position="fixed";
+confetti.style.left=Math.random()*100+"vw";
+confetti.style.top="-20px";
+confetti.style.fontSize="20px";
+confetti.style.animation=`fall ${3+Math.random()*4}s linear infinite`;
+
+document.body.appendChild(confetti);
+
+}
+}
 </script>
 
 </body>
